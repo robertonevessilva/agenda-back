@@ -1,21 +1,22 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 enum Priority {
-  LOW
-  MEDIUM
-  HIGH
+  BAIXA
+  MÉDIA
+  ALTA
 }
 
 enum UserRole {
-  ADMIN
-  USER
+  ADMINISTRADOR
+  USUÁRIO
 }
 
 model User {
