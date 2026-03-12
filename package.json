@@ -1,0 +1,11 @@
+{
+  "name": "agenda",
+  "private": true,
+  "scripts": {
+    "dev": "bash -c 'npm --prefix backend run start:dev & npm --prefix frontend run dev & wait'",
+    "dev:back": "npm --prefix backend run start:dev",
+    "dev:front": "npm --prefix frontend run dev",
+    "test": "npm --prefix backend test",
+    "test:e2e": "npm --prefix backend run test:e2e"
+  }
+}
