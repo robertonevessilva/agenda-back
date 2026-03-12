@@ -9,14 +9,14 @@ datasource db {
 }
 
 enum Priority {
-  BAIXA
-  MÉDIA
-  ALTA
+  LOW
+  MEDIUM  
+  HIGH
 }
 
 enum UserRole {
-  ADMINISTRADOR
-  USUÁRIO
+  ADMIN
+  USER
 }
 
 model User {
