@@ -5,7 +5,8 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: ['https://agenda-front-1i78.onrender.com', 'http://localhost:9000'],
+    // origin: ['https://agenda-front-1i78.onrender.com', 'http://localhost:9000'],
+    origin: true,
     credentials: true,
   });
   app.useGlobalPipes(
