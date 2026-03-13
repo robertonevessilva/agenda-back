@@ -99,20 +99,22 @@ export class AuthController {
   }
 
   private setAuthCookie(res: Response, token: string) {
+    const isSecure = this.isSecureCookie();
     res.cookie(this.getCookieName(), token, {
       httpOnly: true,
-      secure: this.isSecureCookie(),
-      sameSite: 'lax',
+      secure: isSecure,
+      sameSite: isSecure ? 'none' : 'lax',
       path: '/',
       maxAge: this.getCookieMaxAgeMs(),
     });
   }
 
   private clearAuthCookie(res: Response) {
+    const isSecure = this.isSecureCookie();
     res.clearCookie(this.getCookieName(), {
       httpOnly: true,
-      secure: this.isSecureCookie(),
-      sameSite: 'lax',
+      secure: isSecure,
+      sameSite: isSecure ? 'none' : 'lax',
       path: '/',
     });
   }
@@ -125,6 +127,9 @@ export class AuthController {
     const forceSecure = this.configService.get<string>('AUTH_COOKIE_SECURE', '').toLowerCase();
     if (forceSecure === 'true') return true;
     if (forceSecure === 'false') return false;
+    
+    // Em produção, usar cookies seguros apenas se realmente estivermos em HTTPS
+    // No Render, isso deve ser true pois usa HTTPS
     return this.configService.get<string>('NODE_ENV') === 'production';
   }
 
