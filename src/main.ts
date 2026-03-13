@@ -10,7 +10,7 @@ async function bootstrap() {
     .filter(Boolean);
 
   app.enableCors({
-    origin: true, // Permitir todas as origens para teste
+    origin: corsOrigins.length === 1 ? corsOrigins[0] : corsOrigins,
     credentials: true,
   });
   app.useGlobalPipes(
