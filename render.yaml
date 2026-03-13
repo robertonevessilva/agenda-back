@@ -23,7 +23,7 @@ services:
       - key: JWT_EXPIRES_IN
         value: 24h
       - key: CORS_ORIGIN
-        value: https://your-frontend-domain.com
+        value: https://agenda-front-1i78.onrender.com,http://localhost:9000
       - key: AUTH_COOKIE_NAME
         value: agenda_auth
       - key: AUTH_COOKIE_MAX_AGE_MS
